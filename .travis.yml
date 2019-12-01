@@ -1,0 +1,31 @@
+language: cpp
+dist: xenial
+os: linux
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+      - libboost-all-dev
+      - libdlib-dev
+      - libopenblas-dev
+
+before_script:
+  - mkdir build
+  - sudo apt update
+
+
+script:
+  - CXX=/usr/bin/g++-7 CC=/usr/bin/gcc-7
+  - cd build
+  - cmake ..
+  - cmake --build .
+  - cmake --build . --target package
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+  - curl -T 16_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -udvdemon:$BINTRAY_API_KEY "https://api.bintray.com/content/ddzuba/otus-cpp/16_homework/$TRAVIS_BUILD_NUMBER/16_homework-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
