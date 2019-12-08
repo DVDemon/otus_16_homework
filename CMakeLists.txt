@@ -11,14 +11,20 @@ endif()
 find_package(Threads)
 
 
-add_executable(rclst main.cpp)
+add_executable(rclst rclst.cpp)
+add_executable(rclss rclss.cpp)
 
 set_target_properties(rclst PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON)
+set_target_properties(rclss PROPERTIES CXX_STANDARD 14 CXX_STANDARD_REQUIRED ON)
 
 target_include_directories(rclst PRIVATE "${CMAKE_BINARY_DIR}")
+target_include_directories(rclss PRIVATE "${CMAKE_BINARY_DIR}")
+
 target_link_libraries(rclst PRIVATE ${CMAKE_THREAD_LIBS_INIT} dlib lapack blas)
+target_link_libraries(rclss PRIVATE ${CMAKE_THREAD_LIBS_INIT} dlib lapack blas)
 
 install(TARGETS rclst RUNTIME DESTINATION bin)
+install(TARGETS rclss RUNTIME DESTINATION bin)
 
 
 set(CPACK_GENERATOR DEB)
