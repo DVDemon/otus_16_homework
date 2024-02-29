@@ -2,7 +2,7 @@ repo_name: DVDemon/otus_16_homework
 report_id: 13ddee3ef2a8b65c30356e5949921264
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:57:49+00:00'
+timestamp: '2024-02-29T18:31:10+00:00'
 requested_by: DVDemon
 provider: github
 branch: master
@@ -20,7 +20,7 @@ tools:
   detection_source_url: https://github.com/DVDemon/otus_16_homework
   detection_source: Repo Metadata
 - name: CMake
-  description: 'An open-source system that manages the build process '
+  description: An open-source system that manages the build process
   website_url: http://www.cmake.org/
   open_source: false
   hosted_saas: false
